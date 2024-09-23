@@ -1,8 +1,8 @@
 import client from "./client";
-import type { LogsPayload, MessagePayload, MessagesPayload, ReportsPayload } from './types.d';
+import type { LogsPayload, MessagePayload, MessagesPayload, ReportsPayload } from './types';
 
 export async function sendMessage(payload: MessagePayload) {
-  if (process.env.NEXTSMS_FROM) {
+  if (process.env.NEXTSMS_FROM && !payload?.from) {
     payload.from = process.env.NEXTSMS_FROM;
   }
   const { data } = await client.post('/text/single', payload);
@@ -12,7 +12,9 @@ export async function sendMessage(payload: MessagePayload) {
 export async function sendMessages(payload: MessagesPayload) {
   if (process.env.NEXTSMS_FROM) {
     payload.messages.forEach((message) => {
-      message.from = process.env.NEXTSMS_FROM;
+      if (!message?.from) {
+        message.from = process.env.NEXTSMS_FROM;
+      }
     });
   }
   const { data } = await client.post('/text/multi', payload);
