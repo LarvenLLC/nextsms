@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 
 const environment = process.env.NEXTSMS_ENV === 'TEST' ? '/test' : '';
