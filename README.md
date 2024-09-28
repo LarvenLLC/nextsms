@@ -12,12 +12,12 @@ To use this package, the following environment variables are required for authen
 
 ## Installation
 
-First, install the package via npm or yarn:
+First, install the package via npm/yarn/pnpm:
 
 ```bash
-npm install your-package-name
+npm install nextsms
 # or
-yarn add your-package-name
+yarn add nextsms
 ```
 
 Ensure you have your environment variables set up in your `.env` file:
@@ -35,7 +35,7 @@ NEXTSMS_FROM=your-default-sender-id
 Use the `sendMessage` function to send a single SMS. If the `from` field is not provided in the payload, it will automatically use the value from the `NEXTSMS_FROM` environment variable (if set).
 
 ```typescript
-import { sendMessage } from 'your-package-name';
+import { sendMessage } from 'nextsms';
 
 const messagePayload = {
   to: '+255123456789',
@@ -57,7 +57,7 @@ sendMessage(messagePayload)
 You can send multiple messages at once using the `sendMessages` function. Similar to `sendMessage`, the `from` field can be omitted if `NEXTSMS_FROM` is set in the environment variables.
 
 ```typescript
-import { sendMessages } from 'your-package-name';
+import { sendMessages } from 'nextsms';
 
 const bulkPayload = {
   messages: [
@@ -80,7 +80,7 @@ sendMessages(bulkPayload)
 To retrieve the delivery reports for the messages you've sent, use the `getReports` function. The payload can include filter options such as date range or message IDs.
 
 ```typescript
-import { getReports } from 'your-package-name';
+import { getReports } from 'nextsms';
 
 const reportsPayload = {
   startDate: '2024-01-01',
@@ -101,7 +101,7 @@ getReports(reportsPayload)
 The `getLogs` function allows you to fetch logs related to messages, such as sent messages, delivery statuses, and more.
 
 ```typescript
-import { getLogs } from 'your-package-name';
+import { getLogs } from 'nextsms';
 
 const logsPayload = {
   startDate: '2024-01-01',
@@ -122,7 +122,7 @@ getLogs(logsPayload)
 To check your current balance with NextSMS, use the `getBalance` function. This will return the available balance in your account.
 
 ```typescript
-import { getBalance } from 'your-package-name';
+import { getBalance } from 'nextsms';
 
 getBalance()
   .then(response => {
@@ -154,7 +154,7 @@ With this setup, you can omit the `from` field when sending messages, and it wil
 ### Example without `from` in the payload:
 
 ```typescript
-import { sendMessage } from 'your-package-name';
+import { sendMessage } from 'nextsms';
 
 const messagePayload = {
   to: '+255123456789',
@@ -170,6 +170,16 @@ sendMessage(messagePayload)
     console.error('Error sending message:', error);
   });
 ```
+
+## Environment Variable: `NEXTSMS_ENV`
+
+This OPTIONAL environment variable is used to specify the environment in which the NextSMS application is running. It can have the following values:
+
+- `TEST`: Used for testing and staging environments.
+- `LIVE`: Used for the production environment.
+
+By default, the variable is set to `LIVE`. If you want to use the test API, set this variable to `TEST`.
+
 
 ## Error Handling
 
