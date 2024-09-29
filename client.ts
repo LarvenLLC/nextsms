@@ -6,7 +6,7 @@ const usernamePasswordBuffer = Buffer.from(process.env.NEXTSMS_USERNAME + ':' + 
 const base64data = usernamePasswordBuffer.toString('base64');
 
 const client = axios.create({
-  baseURL: process.env.NEXTSMS_BASE_URL + environment,
+  baseURL: (process.env.NEXTSMS_BASE_URL || 'https://messaging-service.co.tz/api/sms/v1') + environment,
   maxBodyLength: Infinity,
   headers: {
     'Content-Type': 'application/json',
