@@ -1,6 +1,8 @@
 # NextSMS API Client Documentation
 
-This package provides a simple interface for interacting with NextSMS services, including sending single/bulk SMS messages, fetching reports, logs, and checking the balance of your account. The package integrates seamlessly with the NextSMS API, offering intuitive functions for common operations.
+This package provides a simple interface for interacting with NextSMS [nextsms.co.tz](https://nextsms.co.tz) services, including sending single/bulk SMS messages, fetching reports, logs, and checking the balance of your account. The package integrates seamlessly with the NextSMS API, offering intuitive functions for common operations.
+
+POSTMAN API Documentation: [NextSMS API Documentation](https://documenter.getpostman.com/view/4680389/SW7dX7JL)
 
 ## Requirements
 
